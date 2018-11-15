@@ -21,7 +21,7 @@ class Window(Frame):
         exit()
 
 root = Tk()
-root.geometry("400x300")
+root.geometry("400x400")
 
 app=Window(root)
 root.mainloop()
