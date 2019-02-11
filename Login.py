@@ -1,3 +1,12 @@
+"""
+Instructions
+You need both this file and the passwords file in the same folder
+Run this login file, and then use the TKinter window that shows up
+There are two accounts
+Username --- Password
+testaccount --- dqs
+altaccount --- altpwd
+"""
 from tkinter import *
 import tkinter.messagebox as tkm
 import passwords
