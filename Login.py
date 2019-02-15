@@ -45,9 +45,11 @@ class Login(Frame):
                 tkm.showinfo("Password Incorrect", "Password Incorrect")
         else:
             tkm.showinfo("No such user", "No such user")
+    
             
 #Main
 root = Tk()
 root.title("Login")
 app = Login(root)
 root.mainloop()
+root.quit()
