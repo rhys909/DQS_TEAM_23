@@ -1,16 +1,8 @@
-"""
-Instructions
-You need both this file and the passwords file in the same folder
-Run this login file, and then use the TKinter window that shows up
-There are two accounts
-Username --- Password
-testaccount --- dqs
-altaccount --- altpwd
-"""
 from tkinter import *
 import tkinter.messagebox as tkm
-import passwords
+import accounts
 import hashlib
+from Student_UI import *
 
 class Login(Frame):
     def __init__(self, master):
@@ -34,17 +26,27 @@ class Login(Frame):
     def validateLogin(self):
         user = self.username.get().strip()
         pwd = self.passwordentry.get()
-        if user in passwords.users:
+        if user in accounts.users:
             key = hashlib.sha1(pwd.encode('utf-8')).hexdigest()
-            if key == passwords.users[user][0]:
-                if passwords.users[user][1] == "Lecturer":
-                    tkm.showinfo("Login Successful", "Login Successful. You are a lecturer")
+            if key == accounts.users[user][0]:
+                if accounts.users[user][1] == "Student":
+                    self.openStudentUI()
                 else:
-                    tkm.showinfo("Login Successful", "Login Successful. You are a student")
+                    tkm.showinfo("Login Successful", "Login Successful. You are a lecturer")
             else:
                 tkm.showinfo("Password Incorrect", "Password Incorrect")
         else:
             tkm.showinfo("No such user", "No such user")
+
+    def openStudentUI(self):
+        t1 = Toplevel(root)
+        Student_UI(t1)
+        t1.geometry("600x500")
+        root.withdraw()
+        t1.lift()
+        t1.attributes("-topmost", True)
+        
+
     
             
 #Main
