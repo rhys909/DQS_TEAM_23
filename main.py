@@ -1,8 +1,10 @@
 from tkinter import *
 import tkinter.messagebox as tkm
-import accounts
+import accounts.accounts as accounts
 import hashlib
-from Student_UI import *
+from modules.Student_UI import *
+from modules.Lecturer_UI import *
+
 
 class Login(Frame):
     def __init__(self, master):
@@ -32,7 +34,7 @@ class Login(Frame):
                 if accounts.users[user][1] == "Student":
                     self.openStudentUI()
                 else:
-                    tkm.showinfo("Login Successful", "Login Successful. You are a lecturer")
+                    self.openLecturerUI()
             else:
                 tkm.showinfo("Password Incorrect", "Password Incorrect")
         else:
@@ -46,6 +48,16 @@ class Login(Frame):
         t1.lift()
         t1.attributes("-topmost", True)
         t1.resizable(False, False)
+
+    def openLecturerUI(self):
+        t1 = Toplevel(root)
+        Lecturer_UI(t1)
+        t1.geometry("450x350")
+        root.withdraw()
+        t1.lift()
+        t1.attributes("-topmost", True)
+        t1.resizable(False, False)
+
         
 
     
