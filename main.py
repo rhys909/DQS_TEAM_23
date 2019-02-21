@@ -45,6 +45,7 @@ class Login(Frame):
         root.withdraw()
         t1.lift()
         t1.attributes("-topmost", True)
+        t1.resizable(False, False)
         
 
     
