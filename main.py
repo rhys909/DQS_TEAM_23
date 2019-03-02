@@ -2,8 +2,8 @@ from tkinter import *
 import tkinter.messagebox as tkm
 import accounts.accounts as accounts
 import hashlib
-from modules.Student_UI import *
 from modules.Lecturer_UI import *
+from modules.Student_UI import *
 
 
 class Login(Frame):

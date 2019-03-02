@@ -57,15 +57,11 @@ class Lecturer_UI(Frame):
         stats = Button(self, text="View statistics")
         stats.grid(row=position, column=0, sticky=W)
 
-        def create_exam():
-            t1.TopLevel(root)
-            New_Exam(t1)
-            t1.geometry("600x500")
-            root.withdraw()
-            t1.lift()
-            t1.attributes("-topmost", True)
-            t1.resizable(False, False)
 
-
-        createExam = Button(self, text="Create exam", command = self.create_exam())
+        createExam = Button(self, text="Create exam", command = self.create_new_exam)
         createExam.grid(row=position, column=1, sticky=W)
+
+    def create_new_exam(self):
+            t1 = Toplevel()
+            Create_Exam(t1)
+
