@@ -1,7 +1,7 @@
 from tkinter import *
 
-class New_Exam(Frame):
-
+class Create_Exam(Frame):
+    
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master = master
@@ -10,9 +10,9 @@ class New_Exam(Frame):
 
     def init_window(self):
         self.master.title("New Test")
-        lblStrAgr = label(self, text = 'True', font=("MS", 16, "bold"))
+        lblStrAgr = Label(self, text = 'True', font=("MS", 16, "bold"))
         lblStrAgr.grid(row=3, column= 4, rowspan=2)
-        lblStrAgr = label(self, text = 'False', font=("MS", 16, "bold"))
+        lblStrAgr = Label(self, text = 'False', font=("MS", 16, "bold"))
         lblStrAgr.grid(row=3, column= 5, rowspan=2)
 
 
@@ -22,7 +22,4 @@ class New_Exam(Frame):
         R2Q1 = Radiobutton(self, variable=self.varQ1, value=1)
         R2Q1.grid(row=5, column= 5)
 
-root = Tk()
-root.title("New Exam")
-app = New_Exam(root)
-root.mainloop()
+        
