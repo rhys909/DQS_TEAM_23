@@ -7,13 +7,22 @@ class Create_Exam(Frame):
         self.master = master
         self.grid()
         self.init_window()
+#        commented out saveTest() until its functional
 #        self.saveTest()
 
     def init_window(self):
         self.master.title("New Test")
 
         lblTstName = Label(self, text=" Enter the \n test name: ", font=('MS', 12,'bold'))
-        lblTstName.grid(row=1, rowspan=2, column=0, columnspan=1)
+        lblTstName.grid(row=1, rowspan=2, column=0, columnspan=1, sticky=W)
+        lblA = Label(self, text=" A)", font=('MS', 8, 'bold'))
+        lblA.self(row=1,rowspan=2, column=7, sticky=E)
+        lblB = Label(self, text=" B)", font=('MS', 8, 'bold'))
+        lblB.self(row=1,rowspan=2, column=8, sticky=E)
+        lblC = Label(self, text=" C)", font=('MS', 8, 'bold'))
+        lblC.self(row=1,rowspan=2, column=9, sticky=E)
+        lblD = Label(self, text=" D)", font=('MS', 8, 'bold'))
+        lblD.self(row=1,rowspan=2, column=10, sticky=E)
 
         lblQ1 = Label(self, text=" Question 1: ", font=('MS', 8 , 'bold'))
         lblQ1.grid(row=3, column=0, rowspan=3, columnspan=2, sticky=W)
@@ -168,12 +177,16 @@ class Create_Exam(Frame):
         R3Q10.grid(row=30, column=9)
         R4Q10 = Radiobutton(self, variable=self.varQ10, value=4)
         R4Q10.grid(row=30, column=10)
+        #above is the code for the radio buttons and I have assigned A the value of 1 B=2 C=3 D=4
+        #Further development can be added to give a variety of questions however for initial implementation
+        #I was just sticking with the multiple choice of 10 questions
 
-#    def saveTest(self):
-#
-#        saveButton= Button(self, text='Save Test', font=('MS', 8, 'bold'))
-#        saveButton['command'] = self.storeTest
-#        saveButton.grid(row=32, sticky=SE)
-#
-#    def storeTest(self):
-#
+"""
+    def saveTest(self):
+
+        saveButton= Button(self, text='Save Test', font=('MS', 8, 'bold'))
+        saveButton['command'] = self.storeTest
+        saveButton.grid(row=32, sticky=SE)
+
+    def storeTest(self):
+"""
