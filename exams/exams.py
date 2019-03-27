@@ -1,12 +1,6 @@
 summativeExams = {
-    1: ("Exam 1", "exam1.csv", [])
-
-
-
-
-
-
-
+    1: ("Exam 1", "exam1.csv", []),
+    2: ("Exam 2", "exam2.csv", []),
 }
 
 formativeExams = {

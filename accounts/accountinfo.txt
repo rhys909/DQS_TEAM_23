@@ -1,2 +1,2 @@
-testaccount --- dqs
-altaccount --- altpwd
+testaccount --- dqs -- lecturer
+altaccount --- altpwd -- student
