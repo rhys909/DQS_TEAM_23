@@ -10,6 +10,8 @@ class Login(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.grid()
+        with open("modules/passInfo.txt", "w") as clearFile:
+            clearFile.write("")
         self.createWidgets()
         
     def createWidgets(self):
@@ -26,12 +28,12 @@ class Login(Frame):
         submit.grid(row=5, column=0, sticky=W, pady=10)
 
     def validateLogin(self):
-        user = self.username.get().strip()
+        self.user = self.username.get().strip()
         pwd = self.passwordentry.get()
-        if user in accounts.users:
+        if self.user in accounts.users:
             key = hashlib.sha1(pwd.encode('utf-8')).hexdigest()
-            if key == accounts.users[user][0]:
-                if accounts.users[user][1] == "Student":
+            if key == accounts.users[self.user][0]:
+                if accounts.users[self.user][1] == "Student":
                     self.openStudentUI()
                 else:
                     self.openLecturerUI()
@@ -43,6 +45,8 @@ class Login(Frame):
     def openStudentUI(self):
         t1 = Toplevel(root)
         Student_UI(t1)
+        with open("modules/passInfo.txt", "a") as passInfo:
+            passInfo.write(self.user + "\n")
         t1.geometry("600x500")
         root.withdraw()
         t1.lift()
@@ -52,6 +56,8 @@ class Login(Frame):
     def openLecturerUI(self):
         t1 = Toplevel(root)
         Lecturer_UI(t1)
+        with open("modules/passInfo.txt", "a") as passInfo:
+            passInfo.write(self.user + "\n")
         t1.geometry("450x350")
         root.withdraw()
         t1.lift()
