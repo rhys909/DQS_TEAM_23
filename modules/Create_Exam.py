@@ -11,7 +11,7 @@ class Create_Exam(Frame):
 #        commented out saveTest() until its functional
 #        self.storeTest()
     def storeTest(self):
-        testName = lblTstName.get()
+        testName = entTestName.get()
 
         Question1 = entQ1.get()
         Question2 = entQ2.get()
