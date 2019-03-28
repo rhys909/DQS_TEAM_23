@@ -25,246 +25,67 @@ class Create_Exam(Frame):
         Question10 = entQ10.get()
 
         ansQ1 = varQ1.get()
-        if  ansQ1 == 1:
-            Q1A = 1
-            Q1B = 0
-            Q1C = 0
-            Q1D = 0
-        elif  ansQ1 == 2:
-            Q1A = 0
-            Q1B = 1
-            Q1C = 0
-            Q1D = 0
-        elif  ansQ1 == 3:
-            Q1A = 0
-            Q1B = 0
-            Q1C = 1
-            Q1D = 0
-        elif  ansQ1 == 4:
-            Q1A = 0
-            Q1B = 0
-            Q1C = 0
-            Q1D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ2 = varQ2.get()
-        if  ansQ2 == 1:
-            Q2A = 1
-            Q2B = 0
-            Q2C = 0
-            Q2D = 0
-        elif  ansQ2 == 2:
-            Q2A = 0
-            Q2B = 1
-            Q2C = 0
-            Q2D = 0
-        elif  ansQ2 == 3:
-            Q2A = 0
-            Q2B = 0
-            Q2C = 1
-            Q2D = 0
-        elif  ansQ2 == 4:
-            Q2A = 0
-            Q2B = 0
-            Q2C = 0
-            Q2D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ3 = varQ3.get()
-        if  ansQ3 == 1:
-            Q3A = 1
-            Q3B = 0
-            Q3C = 0
-            Q3D = 0
-        elif  ansQ3 == 2:
-            Q3A = 0
-            Q3B = 1
-            Q3C = 0
-            Q3D = 0
-        elif  ansQ3 == 3:
-            Q3A = 0
-            Q3B = 0
-            Q3C = 1
-            Q3D = 0
-        elif  ansQ3 == 4:
-            Q3A = 0
-            Q3B = 0
-            Q3C = 0
-            Q3D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ4 = varQ4.get()
-        if  ansQ4 == 1:
-            Q4A = 1
-            Q4B = 0
-            Q4C = 0
-            Q4D = 0
-        elif  ansQ4 == 2:
-            Q4A = 0
-            Q4B = 1
-            Q4C = 0
-            Q4D = 0
-        elif  ansQ4 == 3:
-            Q4A = 0
-            Q4B = 0
-            Q4C = 1
-            Q4D = 0
-        elif  ansQ4 == 4:
-            Q4A = 0
-            Q4B = 0
-            Q4C = 0
-            Q4D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ5 = varQ5.get()
-        if  ansQ5 == 1:
-            Q5A = 1
-            Q5B = 0
-            Q5C = 0
-            Q5D = 0
-        elif  ansQ5 == 2:
-            Q5A = 0
-            Q5B = 1
-            Q5C = 0
-            Q5D = 0
-        elif  ansQ5 == 3:
-            Q5A = 0
-            Q5B = 0
-            Q5C = 1
-            Q5D = 0
-        elif  ansQ5 == 4:
-            Q5A = 0
-            Q5B = 0
-            Q5C = 0
-            Q5D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ6 = varQ6.get()
-        if  ansQ6 == 1:
-            Q6A = 1
-            Q6B = 0
-            Q6C = 0
-            Q6D = 0
-        elif  ansQ6 == 2:
-            Q6A = 0
-            Q6B = 1
-            Q6C = 0
-            Q6D = 0
-        elif  ansQ6 == 3:
-            Q6A = 0
-            Q6B = 0
-            Q6C = 1
-            Q6D = 0
-        elif  ansQ6 == 4:
-            Q6A = 0
-            Q6B = 0
-            Q6C = 0
-            Q6D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ7 = varQ7.get()
-        if  ansQ7 == 1:
-            Q7A = 1
-            Q7B = 0
-            Q7C = 0
-            Q7D = 0
-        elif  ansQ7 == 2:
-            Q7A = 0
-            Q7B = 1
-            Q7C = 0
-            Q7D = 0
-        elif  ansQ7 == 3:
-            Q7A = 0
-            Q7B = 0
-            Q7C = 1
-            Q7D = 0
-        elif  ansQ7 == 4:
-            Q7A = 0
-            Q7B = 0
-            Q7C = 0
-            Q7D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ8 = varQ8.get()
-        if  ansQ8 == 1:
-            Q8A = 1
-            Q8B = 0
-            Q8C = 0
-            Q8D = 0
-        elif  ansQ8 == 2:
-            Q8A = 0
-            Q8B = 1
-            Q8C = 0
-            Q8D = 0
-        elif  ansQ8 == 3:
-            Q8A = 0
-            Q8B = 0
-            Q8C = 1
-            Q8D = 0
-        elif  ansQ8 == 4:
-            Q8A = 0
-            Q8B = 0
-            Q8C = 0
-            Q8D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ9 = varQ9.get()
-        if  ansQ9 == 1:
-            Q9A = 1
-            Q9B = 0
-            Q9C = 0
-            Q9D = 0
-        elif  ansQ9 == 2:
-            Q9A = 0
-            Q9B = 1
-            Q9C = 0
-            Q9D = 0
-        elif  ansQ9 == 3:
-            Q9A = 0
-            Q9B = 0
-            Q9C = 1
-            Q9D = 0
-        elif  ansQ9 == 4:
-            Q9A = 0
-            Q9B = 0
-            Q9C = 0
-            Q9D = 1
-        else:
-            print("Error please put an answer to the question")
-
         ansQ10 = varQ10.get()
-        if  ansQ10 == 1:
-            Q10A = 1
-            Q10B = 0
-            Q10C = 0
-            Q10D = 0
-        elif  ansQ10 == 2:
-            Q10A = 0
-            Q10B = 1
-            Q10C = 0
-            Q10D = 0
-        elif  ansQ10 == 3:
-            Q10A = 0
-            Q10B = 0
-            Q10C = 1
-            Q10D = 0
-        elif  ansQ10 == 4:
-            Q10A = 0
-            Q10B = 0
-            Q10C = 0
-            Q10D = 1
-        else:
-            print("Error please put an answer to the question")
 
-        with open(testName, 'w', newline = '') as f:
+        Q1A = ent1A.get()
+        Q1B = ent1B.get()
+        Q1C = ent1C.get()
+        Q1D = ent1D.get()
+
+        Q2A = ent2A.get()
+        Q2B = ent2B.get()
+        Q2C = ent2C.get()
+        Q2D = ent2D.get()
+
+        Q3A = ent3A.get()
+        Q3B = ent3B.get()
+        Q3C = ent3C.get()
+        Q3D = ent3D.get()
+
+        Q4A = ent4A.get()
+        Q4B = ent4B.get()
+        Q4C = ent4C.get()
+        Q4D = ent4D.get()
+
+        Q5A = ent5A.get()
+        Q5B = ent5B.get()
+        Q5C = ent5C.get()
+        Q5D = ent5D.get()
+
+        Q6A = ent6A.get()
+        Q6B = ent6B.get()
+        Q6C = ent6C.get()
+        Q6D = ent6D.get()
+
+        Q7A = ent7A.get()
+        Q7B = ent7B.get()
+        Q7C = ent7C.get()
+        Q7D = ent7D.get()
+
+        Q8A = ent8A.get()
+        Q8B = ent8B.get()
+        Q8C = ent8C.get()
+        Q8D = ent8D.get()
+
+        Q9A = ent9A.get()
+        Q9B = ent9B.get()
+        Q9C = ent9C.get()
+        Q9D = ent9D.get()
+
+        Q10A = ent10A.get()
+        Q10B = ent10B.get()
+        Q10C = ent10C.get()
+        Q10D = ent10D.get()
+
+        with open(testName + ".csv", 'w', newline = '') as f:
             dqs = csv.writer(f, delimeter='`')
 
             dqs.writerow([Question1 , Q1A, Q1B, Q1C, Q1D])
@@ -277,6 +98,7 @@ class Create_Exam(Frame):
             dqs.writerow([Question8 , Q8A, Q8B, Q8C, Q8D])
             dqs.writerow([Question9 , Q9A, Q9B, Q9C, Q9D])
             dqs.writerow([Question10 , Q10A, Q10B, Q10C, Q10D])
+            dqs.writerow([ansQ1, ansQ2, ansQ3, ansQ4, ansQ5, ansQ6, ansQ7, ansQ8, ansQ9, ansQ10])
 
 
     def init_window(self):
