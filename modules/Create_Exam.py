@@ -1,4 +1,5 @@
 from tkinter import *
+import csv
 
 class Create_Exam(Frame):
 
@@ -8,7 +9,275 @@ class Create_Exam(Frame):
         self.grid()
         self.init_window()
 #        commented out saveTest() until its functional
-#        self.saveTest()
+#        self.storeTest()
+    def storeTest(self):
+        testName = lblTstName.get()
+
+        Question1 = entQ1.get()
+        Question2 = entQ2.get()
+        Question3 = entQ3.get()
+        Question4 = entQ4.get()
+        Question5 = entQ5.get()
+        Question6 = entQ6.get()
+        Question7 = entQ7.get()
+        Question8 = entQ8.get()
+        Question9 = entQ9.get()
+        Question10 = entQ10.get()
+
+        ansQ1 = varQ1.get()
+        if  ansQ1 == 1:
+            Q1A = 1
+            Q1B = 0
+            Q1C = 0
+            Q1D = 0
+        elif  ansQ1 == 2:
+            Q1A = 0
+            Q1B = 1
+            Q1C = 0
+            Q1D = 0
+        elif  ansQ1 == 3:
+            Q1A = 0
+            Q1B = 0
+            Q1C = 1
+            Q1D = 0
+        elif  ansQ1 == 4:
+            Q1A = 0
+            Q1B = 0
+            Q1C = 0
+            Q1D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ2 = varQ2.get()
+        if  ansQ2 == 1:
+            Q2A = 1
+            Q2B = 0
+            Q2C = 0
+            Q2D = 0
+        elif  ansQ2 == 2:
+            Q2A = 0
+            Q2B = 1
+            Q2C = 0
+            Q2D = 0
+        elif  ansQ2 == 3:
+            Q2A = 0
+            Q2B = 0
+            Q2C = 1
+            Q2D = 0
+        elif  ansQ2 == 4:
+            Q2A = 0
+            Q2B = 0
+            Q2C = 0
+            Q2D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ3 = varQ3.get()
+        if  ansQ3 == 1:
+            Q3A = 1
+            Q3B = 0
+            Q3C = 0
+            Q3D = 0
+        elif  ansQ3 == 2:
+            Q3A = 0
+            Q3B = 1
+            Q3C = 0
+            Q3D = 0
+        elif  ansQ3 == 3:
+            Q3A = 0
+            Q3B = 0
+            Q3C = 1
+            Q3D = 0
+        elif  ansQ3 == 4:
+            Q3A = 0
+            Q3B = 0
+            Q3C = 0
+            Q3D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ4 = varQ4.get()
+        if  ansQ4 == 1:
+            Q4A = 1
+            Q4B = 0
+            Q4C = 0
+            Q4D = 0
+        elif  ansQ4 == 2:
+            Q4A = 0
+            Q4B = 1
+            Q4C = 0
+            Q4D = 0
+        elif  ansQ4 == 3:
+            Q4A = 0
+            Q4B = 0
+            Q4C = 1
+            Q4D = 0
+        elif  ansQ4 == 4:
+            Q4A = 0
+            Q4B = 0
+            Q4C = 0
+            Q4D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ5 = varQ5.get()
+        if  ansQ5 == 1:
+            Q5A = 1
+            Q5B = 0
+            Q5C = 0
+            Q5D = 0
+        elif  ansQ5 == 2:
+            Q5A = 0
+            Q5B = 1
+            Q5C = 0
+            Q5D = 0
+        elif  ansQ5 == 3:
+            Q5A = 0
+            Q5B = 0
+            Q5C = 1
+            Q5D = 0
+        elif  ansQ5 == 4:
+            Q5A = 0
+            Q5B = 0
+            Q5C = 0
+            Q5D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ6 = varQ6.get()
+        if  ansQ6 == 1:
+            Q6A = 1
+            Q6B = 0
+            Q6C = 0
+            Q6D = 0
+        elif  ansQ6 == 2:
+            Q6A = 0
+            Q6B = 1
+            Q6C = 0
+            Q6D = 0
+        elif  ansQ6 == 3:
+            Q6A = 0
+            Q6B = 0
+            Q6C = 1
+            Q6D = 0
+        elif  ansQ6 == 4:
+            Q6A = 0
+            Q6B = 0
+            Q6C = 0
+            Q6D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ7 = varQ7.get()
+        if  ansQ7 == 1:
+            Q7A = 1
+            Q7B = 0
+            Q7C = 0
+            Q7D = 0
+        elif  ansQ7 == 2:
+            Q7A = 0
+            Q7B = 1
+            Q7C = 0
+            Q7D = 0
+        elif  ansQ7 == 3:
+            Q7A = 0
+            Q7B = 0
+            Q7C = 1
+            Q7D = 0
+        elif  ansQ7 == 4:
+            Q7A = 0
+            Q7B = 0
+            Q7C = 0
+            Q7D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ8 = varQ8.get()
+        if  ansQ8 == 1:
+            Q8A = 1
+            Q8B = 0
+            Q8C = 0
+            Q8D = 0
+        elif  ansQ8 == 2:
+            Q8A = 0
+            Q8B = 1
+            Q8C = 0
+            Q8D = 0
+        elif  ansQ8 == 3:
+            Q8A = 0
+            Q8B = 0
+            Q8C = 1
+            Q8D = 0
+        elif  ansQ8 == 4:
+            Q8A = 0
+            Q8B = 0
+            Q8C = 0
+            Q8D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ9 = varQ9.get()
+        if  ansQ9 == 1:
+            Q9A = 1
+            Q9B = 0
+            Q9C = 0
+            Q9D = 0
+        elif  ansQ9 == 2:
+            Q9A = 0
+            Q9B = 1
+            Q9C = 0
+            Q9D = 0
+        elif  ansQ9 == 3:
+            Q9A = 0
+            Q9B = 0
+            Q9C = 1
+            Q9D = 0
+        elif  ansQ9 == 4:
+            Q9A = 0
+            Q9B = 0
+            Q9C = 0
+            Q9D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        ansQ10 = varQ10.get()
+        if  ansQ10 == 1:
+            Q10A = 1
+            Q10B = 0
+            Q10C = 0
+            Q10D = 0
+        elif  ansQ10 == 2:
+            Q10A = 0
+            Q10B = 1
+            Q10C = 0
+            Q10D = 0
+        elif  ansQ10 == 3:
+            Q10A = 0
+            Q10B = 0
+            Q10C = 1
+            Q10D = 0
+        elif  ansQ10 == 4:
+            Q10A = 0
+            Q10B = 0
+            Q10C = 0
+            Q10D = 1
+        else:
+            print("Error please put an answer to the question")
+
+        with open(testName, 'w', newline = '') as f:
+            dqs = csv.writer(f, delimeter='`')
+
+            dqs.writerow([Question1 , Q1A, Q1B, Q1C, Q1D])
+            dqs.writerow([Question2 , Q2A, Q2B, Q2C, Q2D])
+            dqs.writerow([Question3 , Q3A, Q3B, Q3C, Q3D])
+            dqs.writerow([Question4 , Q4A, Q4B, Q4C, Q4D])
+            dqs.writerow([Question5 , Q5A, Q5B, Q5C, Q5D])
+            dqs.writerow([Question6 , Q6A, Q6B, Q6C, Q6D])
+            dqs.writerow([Question7 , Q7A, Q7B, Q7C, Q7D])
+            dqs.writerow([Question8 , Q8A, Q8B, Q8C, Q8D])
+            dqs.writerow([Question9 , Q9A, Q9B, Q9C, Q9D])
+            dqs.writerow([Question10 , Q10A, Q10B, Q10C, Q10D])
+
 
     def init_window(self):
         self.master.title("New Test")
@@ -180,13 +449,6 @@ class Create_Exam(Frame):
         #above is the code for the radio buttons and I have assigned A the value of 1 B=2 C=3 D=4
         #Further development can be added to give a variety of questions however for initial implementation
         #I was just sticking with the multiple choice of 10 questions
-
-"""
-    def saveTest(self):
-
         saveButton= Button(self, text='Save Test', font=('MS', 8, 'bold'))
         saveButton['command'] = self.storeTest
         saveButton.grid(row=32, sticky=SE)
-
-    def storeTest(self):
-"""
