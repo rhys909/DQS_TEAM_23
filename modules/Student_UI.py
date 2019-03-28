@@ -1,7 +1,8 @@
 from tkinter import *
 from modules.Take_Summative import *
-import tkinter.messagebox as tkm
+from modules.Take_Formative import *
 from exams.exams import summativeExams
+from exams.exams import formativeExams
 
 class Student_UI(Frame):
     
@@ -22,47 +23,32 @@ class Student_UI(Frame):
             sumExams.append((summativeExams[exam][0], exam))
         self.v1 = IntVar()
         position = 2
-        
         for text, val in sumExams:
             b1 = Radiobutton(self, text=text, variable=self.v1, value=val)
             b1.grid(row=position, column=0, sticky=W)
-            position += 1
-            
+            position += 1   
         take1 = Button(self, text="Take", command=self.takeSum)
         take1.grid(row=position, column=0, sticky=W)
-
         position += 1
-        
         f_exams = Label(self, text="Your formative exams:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
-        
         position += 1
-        
+        formExams = []
         self.v2 = IntVar()
-
-        formExams = [
-            ("Exam1", 1),
-            ("Exam2", 2),
-            ("Exam3", 3),
-            ("Exam4", 4),
-
-        ]
+        position += 1
+        for k in formativeExams:
+            formExams.append((formativeExams[k][0], k))
+       
         for text, val in formExams:
             b2 = Radiobutton(self, text=text,variable=self.v2, value=val)
             b2.grid(row=position, column=0, sticky=W)
-            
             position += 1
-            
-        take2 = Button(self, text="Take")
+        position += 1
+        take2 = Button(self, text="Take", command=self.takeForm)
         take2.grid(row=position, column=0, sticky=W)
-
         position += 1
-        
         r_marks = Label(self, text="Your returned marks:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
-        
         position += 1
-
         self.v3 = IntVar()
-
         retExams = [
             ("Exam1", 1),
             ("Exam2", 2),
@@ -90,4 +76,19 @@ class Student_UI(Frame):
             t1.resizable(False, False)
         
         except:
-            tkm.showwarning("Invalid Action", "You already have an active exam")
+            messagebox.showwarning("Invalid Action", "You already have an active exam")
+    def takeForm(self):
+        with open("modules/passInfo.txt", "a") as passExam:
+            passExam.write("exams/" + formativeExams[self.v2.get()][1])
+        
+        try:
+            t1 = Toplevel()
+            Take_Summative(t1)
+            t1.lift()
+            t1.title(summativeExams[self.v2.get()][0])
+            t1.attributes("-topmost", True)
+            t1.resizable(False, False)
+        
+        except:
+            messagebox.showwarning("Invalid Action", "You already have an active exam")
+        

@@ -4,7 +4,8 @@ summativeExams = {
 }
 
 formativeExams = {
-
+	 1: ("Exam1", "form_exam.csv", []),
+	 2: ("Exam2", "form_exam1.csv", []),
 }
 
 #Exams are stored in this format
