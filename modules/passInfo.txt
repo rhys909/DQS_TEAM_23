@@ -1,2 +1,2 @@
 altaccount
-exams/exam1.csvexams/exam2.csvexams/exam1.csvexams/exam1.csv
+exams/exam2.csvexams/exam1.csv
