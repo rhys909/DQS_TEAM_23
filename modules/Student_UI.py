@@ -1,5 +1,6 @@
 from tkinter import *
 from modules.Take_Summative import *
+import tkinter.messagebox as tkm
 from exams.exams import summativeExams
 
 class Student_UI(Frame):
@@ -80,10 +81,13 @@ class Student_UI(Frame):
     def takeSum(self):
         with open("modules/passInfo.txt", "a") as passExam:
             passExam.write("exams/" + summativeExams[self.v1.get()][1])
-        t1 = Toplevel()
-        Take_Summative(t1)
-        t1.lift()
-        t1.title(summativeExams[self.v1.get()][0])
-        t1.attributes("-topmost", True)
-        t1.resizable(False, False)
+        try:
+            t1 = Toplevel()
+            Take_Summative(t1)
+            t1.lift()
+            t1.title(summativeExams[self.v1.get()][0])
+            t1.attributes("-topmost", True)
+            t1.resizable(False, False)
         
+        except:
+            tkm.showwarning("Invalid Action", "You already have an active exam")
