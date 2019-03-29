@@ -67,16 +67,13 @@ class Student_UI(Frame):
     def takeSum(self):
         with open("modules/passInfo.txt", "a") as passExam:
             passExam.write("exams/" + summativeExams[self.v1.get()][1])
-        try:
-            t1 = Toplevel()
-            Take_Summative(t1)
-            t1.lift()
-            t1.title(summativeExams[self.v1.get()][0])
-            t1.attributes("-topmost", True)
-            t1.resizable(False, False)
-        
-        except:
-            messagebox.showwarning("Invalid Action", "You already have an active exam")
+
+        t1 = Toplevel()
+        Take_Summative(t1)
+        t1.lift()
+        t1.title(summativeExams[self.v1.get()][0])
+        t1.attributes("-topmost", True)
+        t1.resizable(False, False)
     def takeForm(self):
         with open("modules/passInfo.txt", "a") as passExam:
             passExam.write("exams/" + formativeExams[self.v2.get()][1])
