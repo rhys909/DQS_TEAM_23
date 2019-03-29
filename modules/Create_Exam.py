@@ -1,5 +1,6 @@
 from tkinter import *
 import tkinter.messagebox as tkm
+from exams.exams import summativeExams
 import csv
 
 class Create_Exam(Frame):
@@ -110,7 +111,12 @@ class Create_Exam(Frame):
 
             else:
                 answers = [ansQ1,ansQ2,ansQ3,ansQ4,ansQ5,ansQ6,ansQ7,ansQ8,ansQ9,ansQ10]
-                with open(("exams/"+testName+".csv"), 'w') as f:
+                with open("exams/list_of_exams.csv", "a") as file:
+                    code = len(summativeExams)+1
+                    name = "exam"+str(code)+".csv"
+                    file.write(testName+","+name+","+"[]"+"\n")
+                            
+                with open(("exams/"+name), 'w') as f:
                     ans = Q1A+"`"+Q1B+"`"+Q1C+"`"+Q1D
                     f.write(Question1+","+ans+"\n")
                     ans = Q2A+"`"+Q2B+"`"+Q2C+"`"+Q2D
@@ -136,6 +142,8 @@ class Create_Exam(Frame):
                             f.write(str(answers[i])+",")
                         else:
                             f.write(str(answers[i]))
+
+                tkm.showinfo("Action Complete", "Exam Created")
                     
 
                 
