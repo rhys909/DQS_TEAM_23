@@ -58,7 +58,7 @@ class Login(Frame):
         Lecturer_UI(t1)
         with open("modules/passInfo.txt", "a") as passInfo:
             passInfo.write(self.user + "\n")
-        t1.geometry("450x350")
+        t1.geometry("600x700")
         root.withdraw()
         t1.lift()
         t1.attributes("-topmost", True)

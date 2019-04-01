@@ -131,7 +131,6 @@ class Take_Summative(Frame):
 
             butSubmit = Button(self, text="Submit", font=("MS", 8, "bold"), command=self.storeAnswers)
             butSubmit.grid(row=pos, column=0, sticky=W)
-           
 
     def storeAnswers(self):
             user_answered = str(self.varQ1.get()) + " " + str(self.varQ2.get()) + " " + str(self.varQ3.get()) + " " + str(self.varQ4.get()) + " " + str(self.varQ5.get()) + " " + str(self.varQ6.get()) + " " + str(self.varQ7.get()) + " " + str(self.varQ8.get()) + " " + str(self.varQ9.get()) + " " + str(self.varQ10.get())

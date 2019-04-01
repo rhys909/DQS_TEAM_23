@@ -11,7 +11,7 @@ class Take_Formative(Frame):
             self.exam = activeexam.readlines()
             self.exam = self.exam[1]
         self.grid()
-        self.init_window(self.exam)        
+        self.init_window(self.exam)
 
     def init_window(self, exam):
         with open(self.exam) as csvfile:
