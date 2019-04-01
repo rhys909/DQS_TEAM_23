@@ -15,7 +15,13 @@ class Create_Exam(Frame):
     def storeTest(self):
         if self.entTestName.get() != "":
             testName = self.entTestName.get()
-            
+
+            TstFormSumm = self.FormOrSumm.get()
+            if TstFormSumm == 0:
+                TestType = "Formative"
+            else:
+                TestType = "Summative"
+
             Question1 = self.entQ1.get()
             Question2 = self.entQ2.get()
             Question3 = self.entQ3.get()
@@ -115,7 +121,7 @@ class Create_Exam(Frame):
                     code = len(summativeExams)+1
                     name = "exam"+str(code)+".csv"
                     file.write(testName+","+name+","+"[]"+"\n")
-                            
+
                 with open(("exams/"+name), 'w') as f:
                     ans = Q1A+"`"+Q1B+"`"+Q1C+"`"+Q1D
                     f.write(Question1+","+ans+"\n")
@@ -141,21 +147,27 @@ class Create_Exam(Frame):
                         if i != 9:
                             f.write(str(answers[i])+",")
                         else:
-                            f.write(str(answers[i]))
+                            f.write(str(answers[i])+"\n")
+                    f.write(TestType)
+
 
                 tkm.showinfo("Action Complete", "Exam Created")
-                    
 
-                
+
+
         else:
             tkm.showwarning("Invalid Input", "You have not named your test")
-        
+
 
     def init_window(self):
         self.master.title("New Test")
 
         lblTstName = Label(self, text=" Enter the \n test name: ", font=('MS', 12,'bold'))
-        lblTstName.grid(row=1, rowspan=2, column=0, columnspan=1, sticky=W)
+        lblTstName.grid(row=1, rowspan=1, column=0, columnspan=1, sticky=W)
+        lblFormative = Label(self, text=" Formative \n Assesment: ", font=('MS', 8, 'bold'))
+        lblFormative.grid(row=2, rowspan=1, column=0, columnspan=1, sticky=W)
+        lblSummative = Label(self, text=" Summative \n Assesment: ", font=('MS', 8, 'bold'))
+        lblSummative.grid(row=2, rowspan=1, column=2, columnspan=1, sticky=W)
         lblA = Label(self, text=" A)", font=('MS', 8, 'bold'))
         lblA.grid(row=1,rowspan=2, column=7, sticky=E)
         lblB = Label(self, text=" B)", font=('MS', 8, 'bold'))
@@ -275,8 +287,15 @@ class Create_Exam(Frame):
         lbl10D = Label(self, text=" D)", font=('MS', 8, 'bold'))
         lbl10D.grid(row=27,rowspan=1, column=11, sticky=W)
 
-        self.entTestName =Entry(self)
+        self.entTestName = Entry(self)
         self.entTestName.grid(row=1, column=2, columnspan= 5, rowspan=1, sticky=W)
+
+        self.FormOrSumm = IntVar()
+        FormativeRadio = Radiobutton(self, variable=self.FormOrSumm, value=0)
+        FormativeRadio.grid(row=2, column=1, rowspan=1, columnspan=1, sticky=W)
+        SummativeRadio = Radiobutton(self, variable=self.FormOrSumm, value=1)
+        SummativeRadio.grid(row=2, column=3, rowspan=1, columnspan=1, sticky=W)
+
         self.entQ1 = Entry(self)
         self.entQ1.grid(row=3, column=2, columnspan= 5, rowspan=1, sticky=W)
         self.ent1A = Entry(self)
