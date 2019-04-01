@@ -7,6 +7,7 @@ class Statistics(Frame):
 	def __init__(self, master=None):
 		Frame.__init__(self, master)
 		self.master = master
+		#opens the csv file thats written in Lectuer_UI
 		with open("modules/passInfo.txt", "r") as viewExam:
 			self.exam = viewExam.readlines()
 			self.exam = self.exam[1]
@@ -21,9 +22,11 @@ class Statistics(Frame):
 		self.txtDisplay = Text(self, height=30,width=200)
 		self.txtDisplay.tag_configure('boldfont', font =('MS', 8, 'bold'))
 		self.txtDisplay.tag_configure('normfont', font =('MS', 8))
+		#simple tabs to space the results
 		tabResults = ""
 		tabResults += ("\t" + "\t" + "\t" + "\t" + "\t")
 		#all the text that actually displays
+		#loads the data from the csvfile
 		with open(self.exam) as csvfile:
 			reader = csv.reader(csvfile)
 			reader = list(reader)
