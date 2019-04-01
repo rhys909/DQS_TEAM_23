@@ -11,7 +11,7 @@ class Take_Formative(Frame):
             self.exam = activeexam.readlines()
             self.exam = self.exam[1]
         self.grid()
-        self.init_window(self.exam)
+        self.init_window(self.exam)        
 
     def init_window(self, exam):
         with open(self.exam) as csvfile:
@@ -126,12 +126,42 @@ class Take_Formative(Frame):
                 rbQ10 = Radiobutton(self, text=question, variable=self.varQ10, value=(questions.index(question)+1))
                 rbQ10.grid(row=pos, column=4, sticky=W)
                 pos += 1
-            pos += 1
-
-            butSubmit = Button(self, text="Submit", font=("MS", 8, "bold"), command=self.storeAnswers)
+            pos +=1
+            butSubmit = Button(self, text="Check answers", font=("MS", 8, "bold"), command=self.storeAnswers)
             butSubmit.grid(row=pos, column=0, sticky=W)
-
+            butSubmitF = Button(self, text="Final submission", font=("MS", 8, "bold"), command=self.FinalSubmission)
+            butSubmitF.grid(row=pos, column=3, sticky=E)
+            
+    # def count_down():
+    #     for t in range(5, -1, -1):
+    #         sf = "{:02d}:{:02d}".format(*divmod(t, 60))
+    #         time_str.set(sf)
+    #         root.update()
+    #         time.sleep(1)
+    #     root = tk.Tk()
+    #     time_str = tk.StringVar()
+    #     root.mainloop()
+    # if you add timer
     def storeAnswers(self):
+            user_answered = str(self.varQ1.get()) + " " + str(self.varQ2.get()) + " " + str(self.varQ3.get()) + " " + str(self.varQ4.get()) + " " + str(self.varQ5.get()) + " " + str(self.varQ6.get()) + " " + str(self.varQ7.get()) + " " + str(self.varQ8.get()) + " " + str(self.varQ9.get()) + " " + str(self.varQ10.get())
+            user_answered = user_answered.split(" ")
+            wrong_answered = []
+            correct_answers = []
+            with open(self.exam) as csvfile:
+                reader = csv.reader(csvfile)
+                print(user_answered)
+                answers = list(reader)[10]
+                for i in range(len(answers)):
+                    if user_answered[i] != answers[i]:
+                        wrong_answered.append(i)
+                        i +=1
+                    else:
+                        correct_answers.append(i)
+                        i +=1
+            for v in wrong_answered:
+                print("Question: " + str(v+1), "Right answer: " + str(answers[v]))
+
+    def FinalSubmission(self):
             user_answered = str(self.varQ1.get()) + " " + str(self.varQ2.get()) + " " + str(self.varQ3.get()) + " " + str(self.varQ4.get()) + " " + str(self.varQ5.get()) + " " + str(self.varQ6.get()) + " " + str(self.varQ7.get()) + " " + str(self.varQ8.get()) + " " + str(self.varQ9.get()) + " " + str(self.varQ10.get())
             user_answered = user_answered.split(" ")
             with open(self.exam) as csvfile:
@@ -146,4 +176,6 @@ class Take_Formative(Frame):
                     print("Good")
                 else:
                     print("Bad")
+                self.master.destroy()
+
 

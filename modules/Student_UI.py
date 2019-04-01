@@ -38,8 +38,8 @@ class Student_UI(Frame):
         for k in formativeExams:
             formExams.append((formativeExams[k][0], k))
        
-        for text, val in formExams:
-            b2 = Radiobutton(self, text=text,variable=self.v2, value=val)
+        for k,v in formExams:
+            b2 = Radiobutton(self, text=k,variable=self.v2, value=v)
             b2.grid(row=position, column=0, sticky=W)
             position += 1
         position += 1
@@ -74,17 +74,16 @@ class Student_UI(Frame):
         t1.title(summativeExams[self.v1.get()][0])
         t1.attributes("-topmost", True)
         t1.resizable(False, False)
-    def takeForm(self):
+    def takeForm(self): 
         with open("modules/passInfo.txt", "a") as passExam:
-            passExam.write("exams/" + formativeExams[self.v2.get()][1])
-        
+            passExam.write("exams/" + summativeExams[self.v2.get()][1])
         try:
-            t1 = Toplevel()
-            Take_Summative(t1)
-            t1.lift()
-            t1.title(summativeExams[self.v2.get()][0])
-            t1.attributes("-topmost", True)
-            t1.resizable(False, False)
+            t2 = Toplevel()
+            Take_Formative(t2)
+            t2.lift()
+            t2.title(formativeExams[self.v2.get()][0])
+            t2.attributes("-topmost", True)
+            t2.resizable(False, False)
         
         except:
             messagebox.showwarning("Invalid Action", "You already have an active exam")
