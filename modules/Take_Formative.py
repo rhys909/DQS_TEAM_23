@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox
 import csv
 from exams.exams import formativeExams
 
@@ -127,30 +128,22 @@ class Take_Formative(Frame):
                 rbQ10.grid(row=pos, column=4, sticky=W)
                 pos += 1
             pos +=1
-            butSubmit = Button(self, text="Check answers", font=("MS", 8, "bold"), command=self.storeAnswers)
+            butSubmit = Button(self, text="Final submission", font=("MS", 8, "bold"), command=self.storeAnswers)
             butSubmit.grid(row=pos, column=0, sticky=W)
-            butSubmitF = Button(self, text="Final submission", font=("MS", 8, "bold"), command=self.FinalSubmission)
+            butSubmitF = Button(self, text="Submit", font=("MS", 8, "bold"), command=self.Submission)
             butSubmitF.grid(row=pos, column=3, sticky=E)
-            
-    # def count_down():
-    #     for t in range(5, -1, -1):
-    #         sf = "{:02d}:{:02d}".format(*divmod(t, 60))
-    #         time_str.set(sf)
-    #         root.update()
-    #         time.sleep(1)
-    #     root = tk.Tk()
-    #     time_str = tk.StringVar()
-    #     root.mainloop()
-    # if you add timer
+
     def storeAnswers(self):
             user_answered = str(self.varQ1.get()) + " " + str(self.varQ2.get()) + " " + str(self.varQ3.get()) + " " + str(self.varQ4.get()) + " " + str(self.varQ5.get()) + " " + str(self.varQ6.get()) + " " + str(self.varQ7.get()) + " " + str(self.varQ8.get()) + " " + str(self.varQ9.get()) + " " + str(self.varQ10.get())
             user_answered = user_answered.split(" ")
             wrong_answered = []
+            right_answers = []
             correct_answers = []
             with open(self.exam) as csvfile:
                 reader = csv.reader(csvfile)
                 print(user_answered)
                 answers = list(reader)[10]
+                correct = 0
                 for i in range(len(answers)):
                     if user_answered[i] != answers[i]:
                         wrong_answered.append(i)
@@ -158,24 +151,26 @@ class Take_Formative(Frame):
                     else:
                         correct_answers.append(i)
                         i +=1
+                        correct += 1
             for v in wrong_answered:
-                print("Question: " + str(v+1), "Right answer: " + str(answers[v]))
+                tkinter.messagebox.showinfo("Short feedback"," Question: " + str(v+1) + " Right answer: " + str(answers[v]))
+            tkinter.messagebox.showinfo("Short feedback","You got " + str(correct) + " out of " + str(len(answers)))
+            self.master.destroy()
 
-    def FinalSubmission(self):
+    def Submission(self):
             user_answered = str(self.varQ1.get()) + " " + str(self.varQ2.get()) + " " + str(self.varQ3.get()) + " " + str(self.varQ4.get()) + " " + str(self.varQ5.get()) + " " + str(self.varQ6.get()) + " " + str(self.varQ7.get()) + " " + str(self.varQ8.get()) + " " + str(self.varQ9.get()) + " " + str(self.varQ10.get())
             user_answered = user_answered.split(" ")
             with open(self.exam) as csvfile:
                 reader = csv.reader(csvfile)
                 print(user_answered)
                 answers = list(reader)[10]
-                correct = True
+                correct = 0
                 for i in range(len(answers)-1):
-                    if user_answered[i] != answers[i]:
-                        correct = False
-                if correct == True:
-                    print("Good")
-                else:
-                    print("Bad")
-                self.master.destroy()
+                    if user_answered[i] == answers[i]:
+                        correct += 1
+                    else:
+                        pass
+                tkinter.messagebox.showinfo("Short feedback"," You got " + str(correct) + " out of " + str(len(answers)))
+                
 
 
