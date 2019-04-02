@@ -33,12 +33,13 @@ class Statistics(Frame):
         with open("exams/list_of_exams.csv") as file:
             exams = list(csv.reader(file))
             for i in range(len(exams)):
-                if exams[i][1] == self.exam:
-                    self.txtDisplay.insert(END, exams[i][1])
+                if exams[i][1] == str(self.exam.rsplit('/',1)[-1]):
+                    people = exams[i][2]
+                    amount_of_people = people.split("`")
                 else:
-                    self.txtDisplay.insert(END, str(self.exam) + exams[i][1])
+                    pass
             
-            self.txtDisplay.insert(END, "How many people answered the test" + tabResults + "\n", 'boldfont')
+            self.txtDisplay.insert(END, "How many people answered the test" + tabResults + str(len(amount_of_people)-1) + "\n", 'boldfont')
 
             self.txtDisplay.insert(END, "Questions" + tabResults + "Answers" + "\n" , 'boldfont')
 
