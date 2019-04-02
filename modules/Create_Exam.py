@@ -120,7 +120,7 @@ class Create_Exam(Frame):
                 with open("exams/list_of_exams.csv", "a") as file:
                     code = len(summativeExams)+1
                     name = "exam"+str(code)+".csv"
-                    file.write(testName+","+name+","+"[]"+"\n")
+                    file.write(testName+","+name+","+"[]"+","+TestType+"\n")
 
                 with open(("exams/"+name), 'w') as f:
                     ans = Q1A+"`"+Q1B+"`"+Q1C+"`"+Q1D
@@ -148,7 +148,6 @@ class Create_Exam(Frame):
                             f.write(str(answers[i])+",")
                         else:
                             f.write(str(answers[i])+"\n")
-                    f.write(TestType)
 
 
                 tkm.showinfo("Action Complete", "Exam Created")
