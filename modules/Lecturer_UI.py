@@ -27,10 +27,17 @@ class Lecturer_UI(Frame):
             openExams.append((formativeExams[exam][0], exam))
         self.v1 = IntVar()
         position = 2
-        for text, val in openExams:
-            b1 = Radiobutton(self, text=text, variable=self.v1, value=val)
-            b1.grid(row=position, column=0, sticky=W)
-            position += 1   
+        with open("exams/list_of_exams.csv") as file:
+            exams = list(csv.reader(file))
+            for i in range(len(exams)):
+                if exams[i][3] == "Summative":
+                    b1 = Radiobutton(self, text=exams[i][0] + "\t" + "\t" + "\t" + "Summative", variable=self.v1, value=i)
+                    b1.grid(row=position, column=0, sticky=W)
+                    position += 1
+                else:
+                    b1 = Radiobutton(self, text=exams[i][0] + "\t" + "\t" + "\t" + "Formative", variable=self.v1, value=i)
+                    b1.grid(row=position, column=0, sticky=W)
+                    position += 1
 
         modify = Button(self, text="modify")
         modify.grid(row=position, column=0, sticky=W)
@@ -39,7 +46,7 @@ class Lecturer_UI(Frame):
         dele.grid(row=position, column=1, sticky=W)
 
         position += 1
-        f_exams = Label(self, text="Your closed exams:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
+        c_exams = Label(self, text="Your closed exams:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
         position += 1
         closedExams = []
         self.v2 = IntVar()
