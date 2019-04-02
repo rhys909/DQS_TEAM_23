@@ -2,3 +2,6 @@
 *.o
 *.class
 __pycache__/
+accounts/__pycache__/
+modules/__pycache__/
+exams/__pycache__/
