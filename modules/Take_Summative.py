@@ -9,6 +9,7 @@ class Take_Summative(Frame):
         self.master = master
         with open("modules/passInfo.txt", "r") as activeexam:
             self.exam = activeexam.readlines()
+            self.user = self.exam[0].rstrip("\n")
             self.exam = self.exam[1]
         self.grid()
         self.init_window(self.exam)
@@ -147,4 +148,22 @@ class Take_Summative(Frame):
                     print("Good")
                 else:
                     print("Bad")
+            tempList = []
+            with open("exams/list_of_exams.csv") as file:
+                read = list(csv.reader(file))
+                for row in read:
+                    tempList.append(row)
+                for item in tempList:
+                    if ("exams/" + item[1]) == self.exam:
+                        item[2] = item[2] + "`" + self.user
+                
+            with open("exams/list_of_exams.csv", "w") as file:
+                for item in tempList:
+                    for i in item:
+                        if i != item[-1]:
+                            file.write(i + ",")
+                        else:
+                            file.write(i + "\n")
+                    
+                    
 

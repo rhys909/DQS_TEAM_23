@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox as tkm
 from modules.Take_Summative import *
 from modules.Take_Formative import *
 from exams.exams import summativeExams
@@ -10,7 +11,7 @@ class Student_UI(Frame):
         Frame.__init__(self, master)               
         self.master = master
         with open("modules/passInfo.txt", "r") as readInfo:
-            self.username = readInfo.readline()
+            self.username = readInfo.readlines()[0].rstrip("\n")
         self.grid()
         self.init_window()
 
@@ -67,13 +68,19 @@ class Student_UI(Frame):
     def takeSum(self):
         with open("modules/passInfo.txt", "a") as passExam:
             passExam.write("exams/" + summativeExams[self.v1.get()][1])
-
-        t1 = Toplevel()
-        Take_Summative(t1)
-        t1.lift()
-        t1.title(summativeExams[self.v1.get()][0])
-        t1.attributes("-topmost", True)
-        t1.resizable(False, False)
+        with open("exams/list_of_exams.csv") as check:
+            read = list(csv.reader(check))
+            for row in read:
+                if summativeExams[self.v1.get()][1] == row[1]:
+                    if self.username in row[2]:
+                        tkm.showwarning("Invalid Action", "You have already taken this exam")
+                    else:
+                        t1 = Toplevel()
+                        Take_Summative(t1)
+                        t1.lift()
+                        t1.title(summativeExams[self.v1.get()][0])
+                        t1.attributes("-topmost", True)
+                        t1.resizable(False, False)
     def takeForm(self):
         with open("modules/passInfo.txt", "a") as passExam:
             passExam.write("exams/" + formativeExams[self.v2.get()][1])
