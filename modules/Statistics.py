@@ -31,7 +31,7 @@ class Statistics(Frame):
 			reader = csv.reader(csvfile)
 			reader = list(reader)
 			
-			self.txtDisplay.insert(END, "How many people answered the test" + tabResults + reader[12][0] +"\n", 'boldfont')
+			self.txtDisplay.insert(END, "How many people answered the test" + tabResults +"\n", 'boldfont')
 
 			self.txtDisplay.insert(END, "Questions" + tabResults + "Answers" + "\n" , 'boldfont')
 
