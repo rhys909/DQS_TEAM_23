@@ -12,7 +12,7 @@ class Lecturer_UI(Frame):
         Frame.__init__(self, master)
         self.master = master
         with open("modules/passInfo.txt", "r") as readInfo:
-            self.username = readInfo.readline()
+            self.username = readInfo.readlines()[0].rstrip("\n")
         self.grid()
         self.init_window()
 

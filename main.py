@@ -10,8 +10,6 @@ class Login(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
         self.grid()
-        with open("modules/passInfo.txt", "w") as clearFile:
-            clearFile.write("")
         self.createWidgets()
         
     def createWidgets(self):
@@ -43,10 +41,10 @@ class Login(Frame):
             tkm.showinfo("No such user", "No such user")
 
     def openStudentUI(self):
+        with open("modules/passInfo.txt", "w") as passInfo:
+            passInfo.write(self.user + "\n")
         t1 = Toplevel(root)
         Student_UI(t1)
-        with open("modules/passInfo.txt", "a") as passInfo:
-            passInfo.write(self.user + "\n")
         t1.geometry("600x500")
         root.withdraw()
         t1.lift()
@@ -54,10 +52,10 @@ class Login(Frame):
         t1.resizable(False, False)
 
     def openLecturerUI(self):
+        with open("modules/passInfo.txt", "w") as passInfo:
+            passInfo.write(self.user + "\n")
         t1 = Toplevel(root)
         Lecturer_UI(t1)
-        with open("modules/passInfo.txt", "a") as passInfo:
-            passInfo.write(self.user + "\n")
         t1.geometry("600x700")
         root.withdraw()
         t1.lift()
