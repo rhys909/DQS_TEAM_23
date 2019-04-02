@@ -79,12 +79,12 @@ class Student_UI(Frame):
             passExam.write("exams/" + formativeExams[self.v2.get()][1])
         
         try:
-            t1 = Toplevel()
-            Take_Summative(t1)
-            t1.lift()
-            t1.title(formativeExams[self.v2.get()][0])
-            t1.attributes("-topmost", True)
-            t1.resizable(False, False)
+            t2 = Toplevel()
+            Take_Formative(t2)
+            t2.lift()
+            t2.title(formativeExams[self.v2.get()][0])
+            t2.attributes("-topmost", True)
+            t2.resizable(False, False)
         
         except:
             messagebox.showwarning("Invalid Action", "You already have an active exam")
