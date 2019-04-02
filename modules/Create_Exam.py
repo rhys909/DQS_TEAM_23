@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox as tkm
 from exams.exams import summativeExams
+from exams.exams import formativeExams
 import csv
 
 class Create_Exam(Frame):
@@ -118,7 +119,7 @@ class Create_Exam(Frame):
             else:
                 answers = [ansQ1,ansQ2,ansQ3,ansQ4,ansQ5,ansQ6,ansQ7,ansQ8,ansQ9,ansQ10]
                 with open("exams/list_of_exams.csv", "a") as file:
-                    code = len(summativeExams)+1
+                    code = len(summativeExams)+len(formativeExams)+1
                     name = "exam"+str(code)+".csv"
                     file.write(testName+","+name+","+"[]"+","+TestType+"\n")
 
