@@ -12,7 +12,6 @@ class modify (Frame):
         with open("modules/passInfo.txt", "r") as activeexam:
             self.exam = activeexam.readlines()
             fileName = self.exam
-            print(fileName[1])
         with open(fileName[1], 'r') as csvFile:
             csvReader=csv.reader(csvFile)
             counter=1
