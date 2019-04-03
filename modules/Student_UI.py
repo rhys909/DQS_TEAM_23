@@ -52,7 +52,7 @@ class Student_UI(Frame):
         with open("exams/stored_results.csv") as stored_results:
             results = list(csv.reader(stored_results))
         for j in results:
-            if j[2] == self.username:
+            if j[2] == self.username
                 b3 = Radiobutton(self, text=j[0], variable=self.v3, value=j[1])
                 b3.grid(row=position, column=0, sticky=W)
             position += 1
@@ -109,7 +109,8 @@ class Student_UI(Frame):
             right_answers = r1[10]
             for g in student_answer:
                 if button_dir == g[1]:
-                    answers_student = g[0].split("'")
+                    answers_student = g[0].split("`")
+                    answers_student.pop(0)
                     for i in range(len(answers_student)):
                         if answers_student[i] != right_answers[i]:
                             wrong_answer_student.append(i+1)
