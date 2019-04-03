@@ -52,8 +52,9 @@ class Student_UI(Frame):
         with open("exams/stored_results.csv") as stored_results:
             results = list(csv.reader(stored_results))
         for j in results:
-            b3 = Radiobutton(self, text=j[0], variable=self.v3, value=j[1])
-            b3.grid(row=position, column=0, sticky=W)
+            if j[2] == self.username:
+                b3 = Radiobutton(self, text=j[0], variable=self.v3, value=j[1])
+                b3.grid(row=position, column=0, sticky=W)
             position += 1
         view = Button(self, text="View", command=self.Returned)
         view.grid(row=position, column=0, sticky=W)
