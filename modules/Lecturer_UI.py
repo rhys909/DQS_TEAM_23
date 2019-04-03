@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox as tkm
 from modules.Create_Exam import *
 from modules.Take_Summative import *
 from modules.Take_Formative import *
@@ -7,6 +8,7 @@ from modules.Statistics_Summative import *
 from modules.modify import *
 from exams.exams import summativeExams
 from exams.exams import formativeExams
+from exams.exams import allExams
 
 class Lecturer_UI(Frame):
 
@@ -83,11 +85,41 @@ class Lecturer_UI(Frame):
         Create_Exam(t1)
 
     def open_exam(self):
-        pass
+        exam = self.v1.get() + 1
+        tempList = []
+        with open("exams/list_of_exams.csv", "r") as temp:
+            read = list(csv.reader(temp))
+            for row in read:
+                if row[1] == allExams[exam][1]:
+                    row[4] = "Open"
+                tempList.append(row)
+        with open("exams/list_of_exams.csv", "w") as temp:
+            for item in tempList:
+                for i in item:
+                    if i != item[-1]:
+                        temp.write(i + ",")
+                    else:
+                        temp.write(i + "\n")
+        tkm.showinfo("Action succeeded", "The exam has been opened. Please restart the system to see changes")
 
     def close_exam(self):
-        pass
-
+        exam = self.v1.get() + 1
+        tempList = []
+        with open("exams/list_of_exams.csv", "r") as temp:
+            read = list(csv.reader(temp))
+            for row in read:
+                if row[1] == allExams[exam][1]:
+                    row[4] = "Closed"
+                tempList.append(row)
+        with open("exams/list_of_exams.csv", "w") as temp:
+            for item in tempList:
+                for i in item:
+                    if i != item[-1]:
+                        temp.write(i + ",")
+                    else:
+                        temp.write(i + "\n")
+        tkm.showinfo("Action succeeded", "The exam has been closed. Please restart the system to see changes")    
+            
 
     def view_statistics(self):
         ex = int(self.v2.get()) + 1

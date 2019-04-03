@@ -2,7 +2,7 @@ from tkinter import *
 import csv
 from exams.exams import *
 
-class Statistics(Frame):
+class Statistics_Formative(Frame):
 
     def __init__(self, master=None):
         Frame.__init__(self, master)
