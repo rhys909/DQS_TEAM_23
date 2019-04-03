@@ -26,11 +26,11 @@ class Lecturer_UI(Frame):
         with open("exams/list_of_exams.csv") as file:
             exams = list(csv.reader(file))
             for i in range(len(exams)):
-                if exams[i][3] == "Summative":
+                if exams[i][3] == "Summative" and exams[i][4] == "Open":
                     b1 = Radiobutton(self, text=exams[i][0] + "\t" + "\t" + "\t" + "Summative", variable=self.v1, value=i)
                     b1.grid(row=position, column=0, sticky=W)
                     position += 1
-                else:
+                elif exams[i][3] == "Formative" and exams[i][4] == "Open":
                     b1 = Radiobutton(self, text=exams[i][0] + "\t" + "\t" + "\t" + "Formative", variable=self.v1, value=i)
                     b1.grid(row=position, column=0, sticky=W)
                     position += 1
@@ -38,8 +38,17 @@ class Lecturer_UI(Frame):
 
         modify = Button(self, text="Modify exam", command=self.modify)
         modify.grid(row=position, column=0, sticky=W)
+
         dele = Button(self, text="Delete an exam")
         dele.grid(row=position, column=1, sticky=W)
+
+        position += 1
+
+        opene = Button(self, text="Open exam", command=self.open_exam)
+        opene.grid(row=position, column=0, sticky=W)
+
+        close = Button(self, text="Close exam", command=self.close_exam)
+        close.grid(row=position, column=1, sticky=W)
 
         position += 1
         c_exams = Label(self, text="Your closed exams:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
@@ -50,11 +59,11 @@ class Lecturer_UI(Frame):
         with open("exams/list_of_exams.csv") as file:
             exams = list(csv.reader(file))
             for i in range(len(exams)):
-                if exams[i][3] == "Summative":
+                if exams[i][3] == "Summative" and exams[i][4] == "Closed":
                     b2 = Radiobutton(self, text=exams[i][0] + "\t" + "\t" + "\t" + "Summative",variable=self.v2, value=i)
                     b2.grid(row=position, column=0, sticky=W)
                     position += 1
-                else:
+                elif exams[i][3] == "Formative" and exams[i][4] == "Closed":
                     b2 = Radiobutton(self, text=exams[i][0] + "\t" + "\t" + "\t" + "Formative",variable=self.v2, value=i)
                     b2.grid(row=position, column=0, sticky=W)
                     position += 1
@@ -71,6 +80,13 @@ class Lecturer_UI(Frame):
     def create_new_exam(self):
         t1 = Toplevel()
         Create_Exam(t1)
+
+    def open_exam(self):
+        pass
+
+    def close_exam(self):
+        pass
+
 
     def view_statistics(self):
         ex = int(self.v2.get()) + 1
