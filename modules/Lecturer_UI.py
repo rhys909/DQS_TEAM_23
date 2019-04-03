@@ -36,12 +36,10 @@ class Lecturer_UI(Frame):
                     position += 1
 
 
-        modify = Button(self, text="Modify formative", command=self.modify_form)
+        modify = Button(self, text="Modify exam", command=self.modify)
         modify.grid(row=position, column=0, sticky=W)
-        modify = Button(self, text="Modify summative", command=self.modify_sum)
-        modify.grid(row=position, column=1, sticky=W)
         dele = Button(self, text="Delete an exam")
-        dele.grid(row=position, column=2, sticky=W)
+        dele.grid(row=position, column=1, sticky=W)
 
         position += 1
         c_exams = Label(self, text="Your closed exams:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
@@ -64,67 +62,56 @@ class Lecturer_UI(Frame):
 
         position += 1
 
-        stats = Button(self, text="View formative statistics", command = self.view_statistics_f)
+        stats = Button(self, text="View statistics", command = self.view_statistics)
         stats.grid(row=position, column=0, sticky=W)
 
-        stats = Button(self, text="View summative statistics", command = self.view_statistics_s)
-        stats.grid(row=position, column=1, sticky=W)
-
-        position += 1
-
         createExam = Button(self, text="Create exam", command = self.create_new_exam)
-        createExam.grid(row=position, column=0, sticky=W)
+        createExam.grid(row=position, column=1, sticky=W)
 
     def create_new_exam(self):
         t1 = Toplevel()
         Create_Exam(t1)
 
-    def view_statistics_f(self):
+    def view_statistics(self):
         ex = int(self.v2.get()) + 1
-        with open("modules/passInfo.txt", "a") as viewExam:
-            viewExam.write("exams/" + formativeExams[ex][1])
-
-
-        t1 = Toplevel()
-        Statistics(t1)
-        t1.lift()
-        t1.title(formativeExams[self.v2.get()][1])
-        t1.attributes("-topmost", True)
-        t1.resizable(False, False)
-
-    def view_statistics_s(self):
-        ex = int(self.v2.get()) + 1
-        with open("modules/passInfo.txt", "a") as viewExam:
-            viewExam.write("exams/" + summativeExams[ex][1])
-
-
-        t1 = Toplevel()
-        Statistics(t1)
-        t1.lift()
-        t1.title(summativeExams[self.v2.get()][1])
-        t1.attributes("-topmost", True)
-        t1.resizable(False, False)
-    def modify_form(self):
         try:
-            ex = int(self.v1.get()) + 1
+            with open("modules/passInfo.txt", "a") as viewExam:
+                viewExam.write("exams/" + formativeExams[ex][1])
+
+            t1 = Toplevel()
+            Statistics(t1)
+            t1.lift()
+            t1.title(formativeExams[self.v2.get()][1])
+            t1.attributes("-topmost", True)
+            t1.resizable(False, False)
+        except:
+            with open("modules/passInfo.txt", "a") as viewExam:
+                viewExam.write("exams/" + summativeExams[ex][1])
+
+            t1 = Toplevel()
+            Statistics(t1)
+            t1.lift()
+            t1.title(summativeExams[self.v2.get()][1])
+            t1.attributes("-topmost", True)
+            t1.resizable(False, False)
+
+    def modify(self):
+        ex = int(self.v1.get()) + 1
+        try:
             with open("modules/passInfo.txt", "a") as modifyExam:
                 modifyExam.write("exams/" + formativeExams[ex][1])
+
             t1 = Toplevel()
             modify(t1)
             t1.lift()
             t1.attributes("-topmost", True)
             t1.resizable(False, False)
         except:
-            messagebox.showwarning("Invalid Action", "You already have an active exam")
-    def modify_sum(self):
-        try:
-            ex = int(self.v1.get()) + 1
             with open("modules/passInfo.txt", "a") as modifyExam:
                 modifyExam.write("exams/" + summativeExams[ex][1])
+
             t1 = Toplevel()
             modify(t1)
             t1.lift()
             t1.attributes("-topmost", True)
             t1.resizable(False, False)
-        except:
-            messagebox.showwarning("Invalid Action", "You already have an active exam")
