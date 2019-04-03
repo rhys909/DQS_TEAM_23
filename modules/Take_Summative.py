@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox as tkm
 import csv
 from exams.exams import summativeExams
 
@@ -140,14 +141,11 @@ class Take_Summative(Frame):
                 reader = csv.reader(csvfile)
                 print(user_answered)
                 answers = list(reader)[10]
-                correct = True
+                marks = 10
                 for i in range(len(answers)-1):
                     if user_answered[i] != answers[i]:
-                        correct = False
-                if correct == True:
-                    print("Good")
-                else:
-                    print("Bad")
+                        marks -= 1
+                tkm.showinfo("Exam submitted", f"You scored {marks}/10")
             tempList = []
             with open("exams/list_of_exams.csv") as file:
                 read = list(csv.reader(file))
