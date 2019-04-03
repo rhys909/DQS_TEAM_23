@@ -183,6 +183,8 @@ class Take_Summative(Frame):
             result_write.insert(2,self.user)
             #user taking the test
             result_write.insert(3,result_string)
+            #Add "Open" to end
+            result_write.insert(4,"Open")
             #the split list for reassembling in statistics
             with result_file:
                 writer = csv.writer(result_file, delimiter=",")

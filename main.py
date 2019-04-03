@@ -69,5 +69,6 @@ class Login(Frame):
 #Main
 root = Tk()
 root.title("Login")
+root.resizable(False,False)
 app = Login(root)
 root.mainloop()

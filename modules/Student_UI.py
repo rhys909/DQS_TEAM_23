@@ -4,6 +4,7 @@ from modules.Take_Summative import *
 from modules.Take_Formative import *
 from exams.exams import summativeExams
 from exams.exams import formativeExams
+from exams.exams import allExams
 
 class Student_UI(Frame):
     
@@ -21,7 +22,8 @@ class Student_UI(Frame):
         s_exams = Label(self, text="Your summative exams:", font=("MS", 16, "bold")).grid(row=1, column=0, sticky=W)
         sumExams = []
         for exam in summativeExams:
-            sumExams.append((summativeExams[exam][0], exam))
+            if summativeExams[exam][3] != "Closed":
+                sumExams.append((summativeExams[exam][0], exam))
         self.v1 = IntVar()
         position = 2
         for text, val in sumExams:
@@ -37,7 +39,8 @@ class Student_UI(Frame):
         self.v2 = IntVar()
         position += 1
         for form in formativeExams:
-            formExams.append((formativeExams[form][0], form))
+            if formativeExams[form][3] != "Closed":
+                formExams.append((formativeExams[form][0], form))
         for text, val in formExams:
             b2 = Radiobutton(self, text=text,variable=self.v2, value=val)
             b2.grid(row=position, column=0, sticky=W)
@@ -51,8 +54,10 @@ class Student_UI(Frame):
         self.v3 = StringVar()
         with open("exams/stored_results.csv") as stored_results:
             results = list(csv.reader(stored_results))
+        with open("exams/list_of_exams.csv") as checkClosed:
+            isClosed = list(csv.reader(checkClosed))
         for j in results:
-            if j[2] == self.username
+            if j[2] == self.username and j[4] == "Closed":
                 b3 = Radiobutton(self, text=j[0], variable=self.v3, value=j[1])
                 b3.grid(row=position, column=0, sticky=W)
             position += 1
