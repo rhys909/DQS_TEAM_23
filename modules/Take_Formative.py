@@ -10,6 +10,7 @@ class Take_Formative(Frame):
         self.master = master
         with open("modules/passInfo.txt", "r") as activeexam:
             self.exam = activeexam.readlines()
+            self.user = self.exam[0].rstrip("\n")
             self.exam = self.exam[1]
         self.grid()
         self.init_window(self.exam)
@@ -170,6 +171,34 @@ class Take_Formative(Frame):
                         correct += 1
                     else:
                         pass
+                  ###################
+            result_string = "'".join(user_answered)
+            #splitting bart's user output for debugging
+            start = "exams/"
+            end = ".csv"
+            #defining the beginning and end for the search for exam name
+            examname = str(self.exam)
+            #take in the directory
+            examname = examname[examname.find(start)+len(start):examname.rfind(end)]
+            #search for the string between string start and string end and assign
+            result_file = open("exams/stored_results.csv", 'a', newline='')
+            #use append for writing to do newline formatting
+            result_write = []
+            #declare empty list to append
+            result_write.insert(0,examname)
+            #the searched value
+            result_write.insert(1,self.exam)
+            #the directory
+            result_write.insert(2,self.user)
+            #user taking the test
+            result_write.insert(3,result_string)
+            #the split list for reassembling in statistics
+            with result_file:
+                writer = csv.writer(result_file, delimiter=",")
+                #assign writer
+                writer.writerow(result_write)
+                #output
+            ###################
                 tkinter.messagebox.showinfo("Short feedback"," You got " + str(correct) + " out of " + str(len(answers)))
                 
 

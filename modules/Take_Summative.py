@@ -162,14 +162,33 @@ class Take_Summative(Frame):
                             file.write(i + ",")
                         else:
                             file.write(i + "\n")
-            #####write result to csv######
-            result_file = open("exams/summative_results.csv", 'a')
+                 ###################
+            result_string = "'".join(user_answered)
+            #splitting bart's user output for debugging
+            start = "exams/"
+            end = ".csv"
+            #defining the beginning and end for the search for exam name
+            examname = str(self.exam)
+            #take in the directory
+            examname = examname[examname.find(start)+len(start):examname.rfind(end)]
+            #search for the string between string start and string end and assign
+            result_file = open("exams/stored_results.csv", 'a', newline='')
+            #use append for writing to do newline formatting
             result_write = []
-            result_write.insert(0,self.exam)
-            result_write.insert(1,self.user)
-            result_write.insert(2,user_answered)
+            #declare empty list to append
+            result_write.insert(0,examname)
+            #the searched value
+            result_write.insert(1,self.exam)
+            #the directory
+            result_write.insert(2,self.user)
+            #user taking the test
+            result_write.insert(3,result_string)
+            #the split list for reassembling in statistics
             with result_file:
-                writer = csv.writer(result_file)
-                writer.writerow(result_write)       
+                writer = csv.writer(result_file, delimiter=",")
+                #assign writer
+                writer.writerow(result_write)
+                #output
+            ###################       
                     
 
