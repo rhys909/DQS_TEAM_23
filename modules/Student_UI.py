@@ -38,7 +38,6 @@ class Student_UI(Frame):
         position += 1
         for form in formativeExams:
             formExams.append((formativeExams[form][0], form))
-       
         for text, val in formExams:
             b2 = Radiobutton(self, text=text,variable=self.v2, value=val)
             b2.grid(row=position, column=0, sticky=W)
@@ -49,20 +48,14 @@ class Student_UI(Frame):
         position += 1
         r_marks = Label(self, text="Your returned marks:", font=("MS", 16, "bold")).grid(row=position, column=0, sticky=W)
         position += 1
-        self.v3 = IntVar()
-        retExams = [
-            ("Exam1", 1),
-            ("Exam2", 2),
-            ("Exam3", 3),
-    
-        ]
-        for text, val in retExams:
-            b2 = Radiobutton(self, text=text, variable=self.v3, value=val)
-            b2.grid(row=position, column=0, sticky=W)
-            
+        self.v3 = StringVar()
+        with open("exams/stored_results.csv") as stored_results:
+            results = list(csv.reader(stored_results))
+        for j in results:
+            b3 = Radiobutton(self, text=j[0], variable=self.v3, value=j[1])
+            b3.grid(row=position, column=0, sticky=W)
             position += 1
-        
-        view = Button(self, text="View")
+        view = Button(self, text="View", command=self.Returned)
         view.grid(row=position, column=0, sticky=W)
 
     def takeSum(self):
@@ -96,3 +89,34 @@ class Student_UI(Frame):
         except:
             messagebox.showwarning("Invalid Action", "You already have an active exam")
         
+    def Returned(self):
+        sa=[]
+        student_answer = []
+        button_dir = self.v3.get()
+        count = 0
+        correct_answer_student = []
+        wrong_answer_student = []
+        with open("exams/stored_results.csv") as check:
+            read = list(csv.reader(check))
+            for k in read:
+                yt = []
+                yt.append(k[3])
+                yt.append(k[1])
+                student_answer.append(yt)
+        with open(button_dir) as right_answers_file:
+            r1 = list(csv.reader(right_answers_file))
+            right_answers = r1[10]
+            for g in student_answer:
+                if button_dir == g[1]:
+                    answers_student = g[0].split("'")
+                    for i in range(len(answers_student)):
+                        if answers_student[i] != right_answers[i]:
+                            wrong_answer_student.append(i+1)
+                        else:
+                            correct_answer_student.append(i+1)
+                            count +=1
+                    print(wrong_answer_student)
+                    print(right_answers)
+                    for v in wrong_answer_student:
+                        tkinter.messagebox.showinfo("Short feedback"," Question: " + str(v) + " Right answer: " + str(right_answers[v-1]))
+                    tkinter.messagebox.showinfo("Short feedback","You got " + str(len(correct_answer_student)) + " out of " + str(len(right_answers)))
