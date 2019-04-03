@@ -121,7 +121,7 @@ class Create_Exam(Frame):
                 with open("exams/list_of_exams.csv", "a") as file:
                     code = len(summativeExams)+len(formativeExams)+1
                     name = "exam"+str(code)+".csv"
-                    file.write(testName+","+name+","+"[]"+","+TestType+"\n")
+                    file.write(f"{testName},{name},,{TestType}\n")
 
                 with open(("exams/"+name), 'w') as f:
                     ans = Q1A+"`"+Q1B+"`"+Q1C+"`"+Q1D
