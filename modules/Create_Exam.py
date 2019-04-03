@@ -117,11 +117,12 @@ class Create_Exam(Frame):
                 tkm.showwarning("Invalid Input", "Question 10 has not had an answer selected")
 
             else:
+                c = "Closed"
                 answers = [ansQ1,ansQ2,ansQ3,ansQ4,ansQ5,ansQ6,ansQ7,ansQ8,ansQ9,ansQ10]
                 with open("exams/list_of_exams.csv", "a") as file:
                     code = len(summativeExams)+len(formativeExams)+1
                     name = "exam"+str(code)+".csv"
-                    file.write(f"{testName},{name},,{TestType}\n")
+                    file.write(f"{testName},{name},,{TestType},{c}\n")
 
                 with open(("exams/"+name), 'w') as f:
                     ans = Q1A+"`"+Q1B+"`"+Q1C+"`"+Q1D
