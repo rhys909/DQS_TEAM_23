@@ -74,12 +74,16 @@ class Student_UI(Frame):
                     if self.username in row[2]:
                         tkm.showwarning("Invalid Action", "You have already taken this exam")
                     else:
-                        t1 = Toplevel()
-                        Take_Summative(t1)
-                        t1.lift()
-                        t1.title(summativeExams[self.v1.get()][0])
-                        t1.attributes("-topmost", True)
-                        t1.resizable(False, False)
+                        try:
+                            t1 = Toplevel()
+                            Take_Summative(t1)
+                            t1.lift()
+                            t1.title(summativeExams[self.v1.get()][0])
+                            t1.attributes("-topmost", True)
+                            t1.resizable(False, False)
+                        except:
+                            messagebox.showwarning("Invalid Action", "You already had an active exam, restart the system")
+                            
     def takeForm(self):
         with open("modules/passInfo.txt", "a") as passExam:
             passExam.write("exams/" + formativeExams[self.v2.get()][1])
@@ -93,7 +97,7 @@ class Student_UI(Frame):
             t2.resizable(False, False)
         
         except:
-            messagebox.showwarning("Invalid Action", "You already have an active exam")
+            messagebox.showwarning("Invalid Action", "You already had an active exam, restart the system")
         
     def Returned(self):
         sa=[]
