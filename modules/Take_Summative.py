@@ -163,7 +163,7 @@ class Take_Summative(Frame):
                         else:
                             file.write(i + "\n")
                  ###################
-            result_string = "'".join(user_answered)
+            result_string = "`".join(user_answered)
             #splitting bart's user output for debugging
             start = "exams/"
             end = ".csv"

@@ -172,7 +172,7 @@ class Take_Formative(Frame):
                     else:
                         pass
                   ###################
-            result_string = "'".join(user_answered)
+            result_string = "`".join(user_answered)
             #splitting bart's user output for debugging
             start = "exams/"
             end = ".csv"
