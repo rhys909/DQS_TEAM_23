@@ -2,7 +2,8 @@ from tkinter import *
 from modules.Create_Exam import *
 from modules.Take_Summative import *
 from modules.Take_Formative import *
-from modules.Statistics import *
+from modules.Statistics_Formative import *
+from modules.Statistics_Summative import *
 from modules.modify import *
 from exams.exams import summativeExams
 from exams.exams import formativeExams
@@ -95,7 +96,7 @@ class Lecturer_UI(Frame):
                 viewExam.write("exams/" + formativeExams[ex][1])
 
             t1 = Toplevel()
-            Statistics(t1)
+            Statistics_Formative(t1)
             t1.lift()
             t1.title(formativeExams[self.v2.get()][1])
             t1.attributes("-topmost", True)
@@ -105,7 +106,7 @@ class Lecturer_UI(Frame):
                 viewExam.write("exams/" + summativeExams[ex][1])
 
             t1 = Toplevel()
-            Statistics(t1)
+            Statistics_Summative(t1)
             t1.lift()
             t1.title(summativeExams[self.v2.get()][1])
             t1.attributes("-topmost", True)
