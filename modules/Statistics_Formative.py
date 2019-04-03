@@ -84,47 +84,57 @@ class Statistics_Formative(Frame):
 
             self.txtDisplay.insert(END, "Questions" + tabResults + "Answers" + "\n" , 'boldfont')
 
+
             questions = reader[0][1].split('`')
-            print(questions)
             self.txtDisplay.insert(END, reader[0][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A1lst[0]) + tabResults + str(A1lst[1]) + tabResults + str(A1lst[2]) + tabResults + str(A1lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A1lst[0] / sum(A1lst) * 100) + "%" + tabResults + str(A1lst[1] / sum(A1lst) * 100) + "%" + tabResults + str(A1lst[2] / sum(A1lst) * 100) + "%" + tabResults + str(A1lst[3] / sum(A1lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[1][1].split('`')
             self.txtDisplay.insert(END, reader[1][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A2lst[0]) + tabResults + str(A2lst[1]) + tabResults + str(A2lst[2]) + tabResults + str(A2lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A2lst[0] / sum(A2lst) * 100) + "%" + tabResults + str(A2lst[1] / sum(A2lst) * 100) + "%" + tabResults + str(A2lst[2] / sum(A2lst) * 100) + "%" + tabResults + str(A2lst[3] / sum(A2lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[2][1].split('`')
             self.txtDisplay.insert(END, reader[2][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A3lst[0]) + tabResults + str(A3lst[1]) + tabResults + str(A3lst[2]) + tabResults + str(A3lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A3lst[0] / sum(A3lst) * 100) + "%" + tabResults + str(A3lst[1] / sum(A3lst) * 100) + "%" + tabResults + str(A3lst[2] / sum(A3lst) * 100) + "%" + tabResults + str(A3lst[3] / sum(A3lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[3][1].split('`')
             self.txtDisplay.insert(END, reader[3][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A4lst[0]) + tabResults + str(A4lst[1]) + tabResults + str(A4lst[2]) + tabResults + str(A4lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A4lst[0] / sum(A4lst) * 100) + "%" + tabResults + str(A4lst[1] / sum(A4lst) * 100) + "%" + tabResults + str(A4lst[2] / sum(A4lst) * 100) + "%" + tabResults + str(A4lst[3] / sum(A4lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[4][1].split('`')
             self.txtDisplay.insert(END, reader[4][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A5lst[0]) + tabResults + str(A5lst[1]) + tabResults + str(A5lst[2]) + tabResults + str(A5lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A5lst[0] / sum(A5lst) * 100) + "%" + tabResults + str(A5lst[1] / sum(A5lst) * 100) + "%" + tabResults + str(A5lst[2] / sum(A5lst) * 100) + "%" + tabResults + str(A5lst[3] / sum(A5lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[5][1].split('`')
             self.txtDisplay.insert(END, reader[5][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A6lst[0]) + tabResults + str(A6lst[1]) + tabResults + str(A6lst[2]) + tabResults + str(A6lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A6lst[0] / sum(A6lst) * 100) + "%" + tabResults + str(A6lst[1] / sum(A6lst) * 100) + "%" + tabResults + str(A6lst[2] / sum(A6lst) * 100) + "%" + tabResults + str(A6lst[3] / sum(A6lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[6][1].split('`')
             self.txtDisplay.insert(END, reader[6][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A7lst[0]) + tabResults + str(A7lst[1]) + tabResults + str(A7lst[2]) + tabResults + str(A7lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A7lst[0] / sum(A7lst) * 100) + "%" + tabResults + str(A7lst[1] / sum(A7lst) * 100) + "%" + tabResults + str(A7lst[2] / sum(A7lst) * 100) + "%" + tabResults + str(A7lst[3] / sum(A7lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[7][1].split('`')
             self.txtDisplay.insert(END, reader[7][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A8lst[0]) + tabResults + str(A8lst[1]) + tabResults + str(A8lst[2]) + tabResults + str(A8lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A8lst[0] / sum(A8lst) * 100) + "%" + tabResults + str(A8lst[1] / sum(A8lst) * 100) + "%" + tabResults + str(A8lst[2] / sum(A8lst) * 100) + "%" + tabResults + str(A8lst[3] / sum(A8lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[8][1].split('`')
             self.txtDisplay.insert(END, reader[8][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A9lst[0]) + tabResults + str(A9lst[1]) + tabResults + str(A9lst[2]) + tabResults + str(A9lst[3]) + "\n","normfont")
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A9lst[0] / sum(A9lst) * 100) + "%" + tabResults + str(A9lst[1] / sum(A9lst) * 100) + "%" + tabResults + str(A9lst[2] / sum(A9lst) * 100) + "%" + tabResults + str(A9lst[3] / sum(A9lst) * 100) + "%" + "\n","normfont")
 
             questions = reader[9][1].split('`')
             self.txtDisplay.insert(END, reader[9][0] + tabResults + questions[0] + tabResults + questions[1] + tabResults + questions[2] + tabResults + questions[3] + "\n", "normfont")
             self.txtDisplay.insert(END, "Answers" + tabResults + str(A10lst[0]) + tabResults + str(A10lst[1]) + tabResults + str(A10lst[2]) + tabResults + str(A10lst[3]) + "\n","normfont")
-            
+            self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A10lst[0] / sum(A10lst) * 100) + "%" + tabResults + str(A10lst[1] / sum(A10lst) * 100) + "%" + tabResults + str(A10lst[2] / sum(A10lst) * 100) + "%" + tabResults + str(A10lst[3] / sum(A10lst) * 100) + "%" + "\n","normfont")
+
             self.txtDisplay['state'] = DISABLED
             self.txtDisplay.pack() 
 
