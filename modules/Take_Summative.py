@@ -164,6 +164,14 @@ class Take_Summative(Frame):
                             file.write(i + ",")
                         else:
                             file.write(i + "\n")
-                    
+            #####write result to csv######
+            result_file = open("exams/summative_results.csv", 'w')
+            result_write = []
+            result_write.insert(0,self.exam)
+            result_write.insert(1,self.user)
+            result_write.insert(2,user_answered)
+            with result_file:
+                writer = csv.writer(result_file)
+                writer.writerow(result_write)       
                     
 
