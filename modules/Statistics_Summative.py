@@ -1,7 +1,6 @@
 from tkinter import *
 import csv
 from exams.exams import *
-
 class Statistics_Summative(Frame):
 
     def __init__(self, master=None):
@@ -39,6 +38,59 @@ class Statistics_Summative(Frame):
                     amount_of_people = people.split("`")
                 else:
                     pass
+        result_dictionary = {}
+        #declare main dictionary outside of loop
+        with open("exams/stored_results.csv", 'r') as rfile:
+            #open the resultsfile
+            read_res = csv.reader(rfile)
+            #read in
+            listed_inputs = [row for row in read_res if row]
+            #reads in the inputted lines to a list in a list and ignores newline if present
+            for i in range(len(listed_inputs)):
+                exam_key = listed_inputs[i][0]
+                #creates the top level key
+                result_dictionary[exam_key] = {}
+                #creates an empty dictionary in the top level key
+            for j in range(len(listed_inputs)):
+                intermed_dict = {}
+                #declare dictionary to use inside the loop
+                exam_inputted = listed_inputs[j][0]
+                #find the top level key to append to
+                internal_list = []
+                #internal placeholder list to append to for the value for the second dictionary
+                listedres = listed_inputs[j][3].split("`")
+                listedres.pop(0)
+                listedres = [int(i) for i in listedres]
+                # #splits the results string back in to a list
+                internal_list.append(listed_inputs[j][2])
+                # #appends who took the test first
+                internal_list.append(listedres)
+                # #then appends the results they inputted
+                intermed_dict[internal_list[0]] = internal_list[1]
+                # #assigns the key and value to be inputted in to the external dictionary
+                result_dictionary[exam_inputted].update(intermed_dict)
+                # #updates the dictionary
+            print(result_dictionary)
+        outerlist = []
+        for key in result_dictionary:
+        	if key in str(self.exam):
+        		print(key)
+        		for key, value in result_dictionary[key].items():
+        			innerlist = []
+        			innerlist.insert(0,key)
+        			innerlist.insert(1,value)
+        			outerlist.append(innerlist)
+        	else:
+        		print("passed")
+        		pass
+        print(outerlist)
+        userlist = []
+        for i in range(len(outerlist)):
+        	userlist.append(outerlist[i][0])
+        print(userlist)
+
+
+
         A1lst = [0, 0, 0, 0]
         A2lst = [0, 0, 0, 0]
         A3lst = [0, 0, 0, 0]
@@ -78,8 +130,13 @@ class Statistics_Summative(Frame):
                     A10lst[A10-1] += 1
                 else:
                     pass
+            for item in userlist:
+            	button = Button(self, text=item)
+            	button.pack( side = LEFT)
+
 
             
+
             self.txtDisplay.insert(END, "How many people answered the test" + tabResults + str(len(amount_of_people)-1) + "\n", 'boldfont')
 
             self.txtDisplay.insert(END, "Questions" + tabResults + "Answers" + "\n" , 'boldfont')
@@ -136,5 +193,4 @@ class Statistics_Summative(Frame):
             self.txtDisplay.insert(END, "Percentage answered" + tabResults + str(A10lst[0] / sum(A10lst) * 100) + "%" + tabResults + str(A10lst[1] / sum(A10lst) * 100) + "%" + tabResults + str(A10lst[2] / sum(A10lst) * 100) + "%" + tabResults + str(A10lst[3] / sum(A10lst) * 100) + "%" + "\n","normfont")
 
             self.txtDisplay['state'] = DISABLED
-            self.txtDisplay.pack() 
-
+            self.txtDisplay.pack()
